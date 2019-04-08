@@ -1,2 +1,34 @@
 /* CSS Document */
 
+.featured-card-container {
+	margin: 16px auto 16px ;
+	width: 60%;
+	border-radius: 3px;
+  display: grid;
+  grid-template-columns: auto auto auto;
+  grid-gap: 16px;
+  padding: 10px;
+}
+
+.featured-card-container div {
+	border-radius: 3px;
+  text-align: left;
+  padding: 0;
+  font-size: 30px;
+	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+}
+
+.featured-card-container img {
+	width: 100%;
+	border-radius: 3px 3px 0 0;
+}
+
+.featured-card-container h6 {
+	font-size: 18pt;
+	margin: 8px 16px 0 16px;
+}
+
+.featured-card-container p {
+	font-size: 13pt;
+	margin: 8px 16px 16px 16px;
+}

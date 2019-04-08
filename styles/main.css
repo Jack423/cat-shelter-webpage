@@ -1,17 +1,6 @@
 /* CSS Document */
 html {
-	margin: 0;
-	font-family: Roboto, "Roboto Black", "Roboto Thin", "Roboto Medium", "Roboto Light";
-}
-
-body {
-	margin: 0;
-}
-
-.container {
-	width: 80%;
-	margin: 0 auto;
-	
+	font-family: Roboto, "Roboto Black", "Roboto Light", "Roboto Medium", "Roboto Thin";
 }
 
 header {
@@ -74,4 +63,75 @@ nav a::before {
 
 nav a:hover::before {
 	width: 100%;
+}
+
+.nav-bar {
+	width: 80%;
+	margin: 0 auto;
+}
+
+body {
+	margin: 0 auto;
+}
+
+#featured-cats-heading {
+	width: 60%;
+	margin: 24px auto; 
+}
+
+.adopt-a-pet {
+	box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+	background-color: #03A9F4;
+	height: auto;
+	padding-bottom: 40px;
+}
+
+.adopt-a-pet h1 {
+	text-align: center;
+	padding-top: 50px;
+	font-family: "Roboto Thin";
+	color: white;
+}
+
+.adopt-a-pet h3 {
+	text-align: center;
+	font-family: "Roboto";
+	color: white;
+}
+
+.adopt-a-pet p {
+	text-align: center;
+	color: white;
+	font-size: 16pt;
+}
+
+.aap-container {
+	margin: 0 auto;
+	width: 80%;
+	border-radius: 3px;
+  display: grid;
+  grid-template-columns: auto auto auto;
+  grid-gap: 16px;
+  padding: 10px;
+}
+
+.aap-container div {
+	border-radius: 3px;
+  text-align: left;
+  padding: 0 16px 0 16px;
+  font-size: 30px;
+	border-radius: 5px;
+	border: 2px solid white;
+}
+
+footer {
+	height: 50px;
+	text-align: center;
+	background: #0288D1;
+}
+
+footer p {
+	margin-top: auto;
+	padding-top: 15px;
+	color: #E1F5FE;
 }
