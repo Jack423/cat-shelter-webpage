@@ -16,6 +16,11 @@
   padding: 0;
   font-size: 30px;
 	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+	transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+}
+
+.featured-card-container div:hover {
+	box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
 }
 
 .featured-card-container img {
