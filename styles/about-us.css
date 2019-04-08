@@ -58,7 +58,7 @@ nav a::before {
 	top: 0;
 	width: 0%;
 
-	transition: all ease-in-out 1000ms;
+	transition: all ease-in-out 250ms;
 }
 
 nav a:hover::before {
@@ -72,54 +72,6 @@ nav a:hover::before {
 
 body {
 	margin: 0 auto;
-}
-
-#featured-cats-heading {
-	width: 60%;
-	margin: 24px auto;
-}
-
-.adopt-a-pet {
-	box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
-	background-color: #03A9F4;
-	height: auto;
-	padding-bottom: 40px;
-}
-
-.adopt-a-pet h1 {
-	text-align: center;
-	padding-top: 50px;
-	color: white;
-}
-
-.adopt-a-pet h3 {
-	text-align: center;
-	color: white;
-}
-
-.adopt-a-pet p {
-	text-align: center;
-	color: white;
-	font-size: 16pt;
-}
-
-.aap-container {
-	margin: 0 auto;
-	width: 80%;
-	border-radius: 3px;
-  display: grid;
-  grid-template-columns: auto auto auto;
-  grid-gap: 16px;
-  padding: 10px;
-}
-
-.aap-container div {
-	border-radius: 3px;
-  text-align: left;
-  padding: 0 16px 0 16px;
-  font-size: 30px;
-	border-radius: 5px;
-	border: 2px solid white;
 }
 
 footer {
