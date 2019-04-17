@@ -7,6 +7,7 @@
   <link rel="icon" href="images/favicon.png">
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+
 	<meta charset="utf-8">
 	<title>About Us</title>
 </head>
@@ -16,11 +17,18 @@
 		<img src="images/nav-icon.png" alt="logo" class="logo">
 
 		<nav>
-			<ul>
-			 	<li><a href="index.html">Home</a></li>
+			<ul class="nav">
+				<li><a href="index.html">Home</a></li>
 				<li><a href="about_us.html">About Us</a></li>
-				<li><a href="#">Our Cats</a></li>
-				<li><a href="#">Adopt Today!</a></li>
+				<li class="drop">Our Cats
+					<ul>
+						<li><a href="#">Females</a></li>
+						<li><a href="#">Males</a></li>
+						<li><a href="#">Kittens</a></li>
+						<li><a href="#">Adults</a></li>
+					</ul>
+				</li>
+				<li><a href="adopt_today.html">Adopt Today!</a></li>
 			</ul>
 		</nav>
 	</div>
@@ -30,37 +38,51 @@
   <div class="about-card-container">
     <div class="about-card">
 			<h1>About us</h1>
-			<p>
-				From the beginning, Touched By A Paw was instituted with a no-kill policy. While
-				the rescued cats might have a number of issues caused by abuse or neglect, I seek
-				out a solution for even the most challenging situtations. Cats deemed not adoptable due to behavioral problems might go to a non-working safe farm where they
-				are housed in a building, fed, given veterinary care if needed, and can roam in and
-				out free. Our vet bills run high at times. On average, Touched By A Paw spends between $7,000 and $8,000 per month to care for strays. Monthly donations and occasional fundraisers fund operational costs. Costs depend on the rescued needs
-				such as an leg amputation, an eye removal, burns, broken bones, etc., but we do
-				it because these cats deserve to be rescued and live out their lives.
-			</p>
+			<p> From the beginning, Touched By A Paw was instituted with a no-kill policy. While
+			  the rescued cats might have a number of issues caused by abuse or neglect, we seek
+			  out a solution for even the most challenging situtations. </p>
+			<p>Cats deemed not adoptable due to behavioral problems might go to a non-working safe farm where they
+			  are housed in a building, fed, given veterinary care if needed, and can roam in and
+			  out free. </p>
+			<p>Our vet bills run high at times. On average, Touched By A Paw spends between $7,000 and $8,000 per month to care for strays. Monthly donations and occasional fundraisers fund operational costs. Costs depend on the rescued needs
+			  such as an leg amputation, an eye removal, burns, broken bones, etc., but we do
+			  it because these cats deserve to be rescued and live out their lives. </p>
 			<h6>How can you help?</h6>
-			<p>
-				Touched By A Paw is currently
-				in need of canned and dry cat food, clumping cat litter, trash bags, dish soap, big
-				bottles of hand sanitizer, copy paper and paper towels. Other wish list items include: cat treats, toys, baby blankets, fleece
-				blankets or material, rubber backed throw
-				rugs, cat beds, kitty condos, cat furniture
-				and scratching posts. Monetary donations
-				are welcomed as well. 
-			</p>
+			<p> Touched By A Paw is currently
+			  in need of the following items:</p>
+			<ul>
+				<li>Canned and dry cat food</li>
+				<li>Clumping cat litter</li>
+				<li>Trash bags</li>
+				<li>Dish soap</li>
+				<li>Big bottles of hand sanitizer</li>
+				<li>Copy paper and paper towels</li>
+			</ul>
+			<p>Other wish list items include:</p>
+			<ul>
+				<li>Cat treats</li>
+				<li>Toys</li>
+				<li>Baby blankets</li>
+				<li>Fleece blankets or material</li>
+				<li>Rubber backed throw rugs</li>
+				<li>Cat beds</li>
+				<li>Kitty condos</li>
+				<li>Cat furniture</li>
+				<li>Scratching posts</li>
+			</ul>
     </div>
     <aside class="aside">
 			<h1>How can you help?</h1>
-			<p>Touched By A Paw is currently
-			in need of canned and dry cat food, clumping cat litter, trash bags, dish soap, big
-			bottles of hand sanitizer, copy paper and paper towels. Other wish list items include: cat treats, toys, baby blankets, fleece
-			blankets or material, rubber backed throw
-			rugs, cat beds, kitty condos, cat furniture
-			and scratching posts. Monetary donations
-			are welcomed as well. </p>
+			<p>Sign up for the newsletter</p>
+			<form action="#">
+				<label for="name">Name</label>
+				<input type="text" id="name" name="newsletter" placeholder="John Doe" required>
+				<label for="email">Email</label>
+				<input type="email" name="newsletter" placeholder="email@email.com" required>
+				<input type="submit" value="SUBMIT">
+			</form>
     </aside>
-  </div>
+	</div>
 </body>
 
 <footer>
