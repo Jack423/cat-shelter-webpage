@@ -2,11 +2,14 @@
 <html>
 
 <head lang="en">
-	<link rel="stylesheet" href="styles/main.css">
+	<link rel="stylesheet" href="styles/control_pannel.css">
 	<link rel="stylesheet" href="styles/card-view.css">
 	<link rel="icon" href="images/favicon.png">
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+  <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
+  <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
+  <script src="js/main.js"></script>
 	<meta charset="utf-8">
 	<title>Touched By A Paw</title>
 </head>
@@ -35,62 +38,36 @@
 </header>
 
 <body>
-	<h1 id="featured-cats-heading">Featured Cats</h1>
-	<div class="featured-card-container">
-		<div class="featured-card">
-			<img src="images/julie.png">
-			<h6>Julie</h6>
-			<p>Female - 6 Years old</p>
-		</div>
-		<div class="item2">
-			<img src="images/matio.png">
-			<h6>Matio</h6>
-			<p>Male</p>
-		</div>
-		<div class="item3">
-			<img src="images/jacobe.png">
-			<h6>Jacobe</h6>
-			<p>Male - 9 Years old</p>
-		</div>
-		<div class="item4">
-			<img src="images/bella.png">
-			<h6>Bella</h6>
-			<p>Female - 1 Year old</p>
-		</div>
-		<div class="item5">
-			<img src="images/kobe.png">
-			<h6>Kobe</h6>
-			<p>Male - 1 Year old</p>
-		</div>
-		<div class="item5">
-			<img src="images/lincoln.png">
-			<h6>Lincoln</h6>
-			<p>Male - 7 Year old</p>
-		</div>
-	</div>
+	<div id="login-div" class="main-div">
+    <h3>Login</h3>
+    <input type="email" placeholder="Email" id="email-field"/>
+    <input type="password" placeholder="Password" id="password-field" />
+    <button onclick="login()">Login to Control Pannel</button>
+  </div
 
-	<div class="adopt-a-pet">
-		<h1>Planning to Adopt a Pet?</h1>
-		<div class="aap-container">
-			<div class="item1">
-				<h3>Checklist for New Adopters</h3>
-				<p>Help make the transition as smooth as possible.</p>
-			</div>
-			<div class="item1">
-				<h3>Finding the Right Pet</h3>
-				<p>Get tips on figuring out who you should adopt.</p>
-			</div>
-			<div class="item1">
-				<h3>Pet Adoption FAQs</h3>
-				<p>Get answeres to questions you haven't thought of.</p>
-			</div>
-		</div>
-	</div>
+  <div id="user-div" class="loggedin-div">
+    <h3>Logged In</h3>
+  </div>
 </body>
 
 <footer>
 	<p>&copy;2019 Apex Software</p>
 </footer>
+
+
+<script src="https://www.gstatic.com/firebasejs/5.10.0/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyC7tYzNEgScBqWp9HgApxSkj4H6rSixx7c",
+    authDomain: "test-f56b4.firebaseapp.com",
+    databaseURL: "https://test-f56b4.firebaseio.com",
+    projectId: "test-f56b4",
+    storageBucket: "test-f56b4.appspot.com",
+    messagingSenderId: "677229509148"
+  };
+  firebase.initializeApp(config);
+</script>
 
 <!-- Firebase scripts -->
 <script src="https://www.gstatic.com/firebasejs/5.10.0/firebase-app.js"></script>
