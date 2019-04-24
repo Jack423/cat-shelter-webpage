@@ -9,7 +9,6 @@
 	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
   <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
   <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
-  <script src="js/main.js"></script>
 	<meta charset="utf-8">
 	<title>Touched By A Paw</title>
 </head>
@@ -38,40 +37,46 @@
 </header>
 
 <body>
-	<div id="login-div" class="main-div">
-    <h3>Login</h3>
-    <input type="email" placeholder="Email" id="email-field"/>
-    <input type="password" placeholder="Password" id="password-field" />
-    <button onclick="login()">Login to Control Pannel</button>
-  </div
+	<script src="https://www.gstatic.com/firebasejs/5.10.0/firebase.js"></script>
+	<script>
+		// Initialize Firebase
+		var config = {
+			apiKey: "AIzaSyC7tYzNEgScBqWp9HgApxSkj4H6rSixx7c",
+			authDomain: "test-f56b4.firebaseapp.com",
+			databaseURL: "https://test-f56b4.firebaseio.com",
+			projectId: "test-f56b4",
+			storageBucket: "test-f56b4.appspot.com",
+			messagingSenderId: "677229509148"
+		};
+		firebase.initializeApp(config);
+	</script>
+	
+	<script src="https://cdn.firebase.com/libs/firebaseui/3.6.0/firebaseui.js"></script>
+    <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.6.0/firebaseui.css" />
+    <script type="text/javascript">
+      // FirebaseUI config.
+      var uiConfig = {
+        signInOptions: [
+          // Leave the lines as is for the providers you want to offer your users.
+          firebase.auth.EmailAuthProvider.PROVIDER_ID,
+        ],
+      };
 
-  <div id="user-div" class="loggedin-div">
-    <h3>Logged In</h3>
-  </div>
+      // Initialize the FirebaseUI Widget using Firebase.
+      var ui = new firebaseui.auth.AuthUI(firebase.auth());
+      // The start method will wait until the DOM is loaded.
+      ui.start('#firebaseui-auth-container', uiConfig);
+    </script>
+	
+	<div id="firebaseui-auth-container" style="margin-top: 150px;"></div>
+	
+	<div id="logged-in">
+		<p>Logged in</p>
+	</div>
 </body>
 
 <footer>
 	<p>&copy;2019 Apex Software</p>
 </footer>
-
-
-<script src="https://www.gstatic.com/firebasejs/5.10.0/firebase.js"></script>
-<script>
-  // Initialize Firebase
-  var config = {
-    apiKey: "AIzaSyC7tYzNEgScBqWp9HgApxSkj4H6rSixx7c",
-    authDomain: "test-f56b4.firebaseapp.com",
-    databaseURL: "https://test-f56b4.firebaseio.com",
-    projectId: "test-f56b4",
-    storageBucket: "test-f56b4.appspot.com",
-    messagingSenderId: "677229509148"
-  };
-  firebase.initializeApp(config);
-</script>
-
-<!-- Firebase scripts -->
-<script src="https://www.gstatic.com/firebasejs/5.10.0/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/5.10.0/firebase-auth.js"></script>
-<script src="https://www.gstatic.com/firebasejs/5.10.0/firebase-database.js"></script>
 
 </html>
