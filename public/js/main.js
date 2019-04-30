@@ -1,12 +1,12 @@
 'use strict';
 
 var config = {
-	apiKey: "AIzaSyC7tYzNEgScBqWp9HgApxSkj4H6rSixx7c",
-	authDomain: "test-f56b4.firebaseapp.com",
-	databaseURL: "https://test-f56b4.firebaseio.com",
-	projectId: "test-f56b4",
-	storageBucket: "test-f56b4.appspot.com",
-	messagingSenderId: "677229509148"
+  apiKey: "AIzaSyDAbRSxaBe1BqxI9WO7pBeSivIlbaxmbJg",
+  authDomain: "tbap-website.firebaseapp.com",
+  databaseURL: "https://tbap-website.firebaseio.com",
+  projectId: "tbap-website",
+  storageBucket: "tbap-website.appspot.com",
+  messagingSenderId: "435392249301"
 };
 
 const testButton = document.getElementById('test');
@@ -131,5 +131,82 @@ function createCatElement(catId, name, gender, age, photoUrl) {
 			'<img id="photo" src="">' +
 			'<h6 id="name"></h6>' +
 			'<p id="gender"></p>' +
+			'<p id="age"></p>' +
 		'</div>';
+
+	// Create DOM element from the HTML
+	var div = document.createElement('div');
+	div.innerHTML = html;
+	var catElement = div.firstChild;
+
+	catElement.getElementById('name')[0].innerText = name;
+	catElement.getElementById('gender')[0].innerText = gender;
+	catElement.getElementById('age')[0].innerText = age;
+	catElement.getElementById('photo')[0].style.backgroundImage = 'url("' +
+      (photoUrl || './silhouette.jpg') + '")';
+
+	return catElement;
+}
+
+function startDatabaseQueriesMales() {
+	var ref = firebase.firestore();
+
+	ref.collection("cats").where("gender", "==", "Male")
+		.get()
+		.then(function(querySnapshot) {
+			querySnapshot.forEach(function(doc) {
+				var containerElement = sectionElement.getElementsByClassName('card-container')[0];
+				containerElement.insertBefore(
+					createCatElement(doc.key, doc.val().name, doc.val().gender, data.val().age, data.val().photoUrl),
+					containerElement.firstChild);
+			});
+		})
+		.catch(function(error) {
+			console.log("Error getting some documents: ", error);
+		});
+}
+
+function startDatabaseQueriesFemales() {
+	var ref = firebase.firestore();
+
+	ref.collection("cats").where("gender", "==", "Female")
+		.get()
+		.then(function(querySnapshot) {
+			querySnapshot.forEach(function(doc) {
+				createCatElement(doc.key, doc.val().name, doc.val().gender, data.val().age, data.val().photoUrl);
+			})
+		})
+		.catch(function(error) {
+			console.log("Error getting some documents: ", error);
+		});
+}
+
+function startDatabaseQueriesAdults() {
+	var ref = firebase.firestore();
+
+	ref.collection("cats").where("age", ">=", 2)
+		.get()
+		.then(function(querySnapshot) {
+			querySnapshot.forEach(function(doc) {
+				createCatElement(doc.key, doc.val().name, doc.val().gender, data.val().age, data.val().photoUrl);
+			})
+		})
+		.catch(function(error) {
+			console.log("Error getting some documents: ", error);
+		});
+}
+
+function startDatabaseQueriesKittens() {
+	var ref = firebase.firestore();
+
+	ref.collection("cats").where("age", "<=", 1)
+		.get()
+		.then(function(querySnapshot) {
+			querySnapshot.forEach(function(doc) {
+				createCatElement(doc.key, doc.val().name, doc.val().gender, data.val().age, data.val().photoUrl);
+			})
+		})
+		.catch(function(error) {
+			console.log("Error getting some documents: ", error);
+		});
 }
