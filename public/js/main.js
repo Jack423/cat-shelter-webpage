@@ -169,7 +169,7 @@ function startDatabaseQueriesFemales() {
 
 	ref.collection("cats").where("gender", "==", "Female")
 		.get()
-		.then(function(querySnapshot) {
+		.then(function(doc) {
 			querySnapshot.forEach(function(doc) {
 				createCatElement(doc.key, doc.val().name, doc.val().gender, data.val().age, data.val().photoUrl);
 			})
