@@ -38,7 +38,7 @@ nav a, nav li {
 .nav > li {
 	display: inline-block;
 	padding: 25px 20px 25px 20px;
-	cursor: pointer;    
+	cursor: pointer;
 }
 
 nav li:hover {
@@ -106,6 +106,28 @@ input[type=submit] {
 input[type=submit]:hover {
 	background-color: #67daff;
 	transition: all ease-in-out;
+}
+
+.contact-phone, .contact-email {
+	margin-top: 30px;
+}
+
+.contact-phone a {
+	text-decoration: none;
+	color: white;
+	padding: 10px 50px 10px 50px;
+	font-size: 16pt;
+	border-radius: 3px;
+	background-image: linear-gradient(to right top, #03a9f4, #029de7, #0291db, #0185ce, #007ac1);
+}
+
+.contact-email a {
+	text-decoration: none;
+	color: white;
+	padding: 10px 10px 10px 10px;
+	font-size: 16pt;
+	border-radius: 3px;
+	background-image: linear-gradient(to right top, #03a9f4, #029de7, #0291db, #0185ce, #007ac1);
 }
 
 footer {

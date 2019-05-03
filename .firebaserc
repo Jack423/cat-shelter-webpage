@@ -1,6 +1,7 @@
 {
   "projects": {
     "default": "test-f56b4",
-    "tbap": "tbap-website"
+    "tbap": "tbap-website",
+    "quotable": "quotable-c70b9"
   }
 }

@@ -1,5 +1,6 @@
 'use strict';
 
+// Required statement for Firebase API shit
 var config = {
   apiKey: "AIzaSyDAbRSxaBe1BqxI9WO7pBeSivIlbaxmbJg",
   authDomain: "tbap-website.firebaseapp.com",
@@ -9,23 +10,21 @@ var config = {
   messagingSenderId: "435392249301"
 };
 
-const testButton = document.getElementById('test');
-
+// Use that thing we just made and use the initializeApp function to do the config
 firebase.initializeApp(config);
 
+// When a user is logged in, run this function
 firebase.auth().onAuthStateChanged(function(user) {
   if (user) {
-    // User is signed in.
-
+    // User is signed in
+    // Display content for logged in user
     document.getElementById("user_div").style.display = "block";
     document.getElementById("login_div").style.display = "none";
 
     var user = firebase.auth().currentUser;
 
     if(user != null){
-
       var email_id = user.email;
-      //document.getElementById("user_para").innerHTML = "Welcome User : " + email_id;
     }
 
   } else {
@@ -35,12 +34,22 @@ firebase.auth().onAuthStateChanged(function(user) {
   }
 });
 
+/*
+When a user clicks the login button, this function is called and grabs the
+email and password and uses the Firebase API to check if the user's password
+is actually correct.
+
+You cannot register an account here due to security measures. So new accounts
+can only be created in the Firebase developer console.
+*/
 function login(){
+  // Get the value out of the email field
   var userEmail = document.getElementById("email_field").value;
+  // Get the value out of the password field
   var userPass = document.getElementById("password_field").value;
 
   firebase.auth().signInWithEmailAndPassword(userEmail, userPass).catch(function(error) {
-    // Handle Errors here.
+    // Handle Errors
     var errorCode = error.code;
     var errorMessage = error.message;
 
@@ -49,13 +58,23 @@ function login(){
 
 }
 
+// When the user clicks the logout button, then logout function is called
 function logout(){
   firebase.auth().signOut();
 }
 
+/*
+This function grabs the data from the elements in the form, stores their data
+in variables, then calls the firebase firestore function to send the data to
+the database.
+
+The function also uploads the cat images to the Firebase storage and assigns a
+URL to each image so it can be accessed that way vs having the image stored
+locally.
+*/
 function addCat() {
-	var firestore = firebase.firestore();
-	var photoUrl = "";
+	var firestore = firebase.firestore(); // Create firestore reference
+  // Grab the values of the UI elements
 	var catImage = document.querySelector('#cat-image').files[0];
 	var name = document.getElementById('name');
 	var gender = document.getElementById('gender');
@@ -63,7 +82,7 @@ function addCat() {
 	var age = document.getElementById('age');
 	var description = document.getElementById('description');
 
-	var storageBucket = firebase.storage().ref(name.value);
+	var storageBucket = firebase.storage().ref(name.value); //Create a firebase storage reference
 
 	var uploadTask = storageBucket.put(catImage);
 	// Register three observers:
@@ -89,6 +108,7 @@ function addCat() {
 	  // Handle successful uploads on complete
 	  uploadTask.snapshot.ref.getDownloadURL().then(function(downloadURL) {
 			console.log(downloadURL);
+      // Add the data to the cats colleciton
 			firestore.collection("cats").add({
 				name: name.value,
 				gender: gender.value,
@@ -104,6 +124,7 @@ function addCat() {
 				console.error("Error adding document: ", docRef);
 			});
 
+      // This makes the snackbar show up when the cat has been created
 			// Get the snackbar DIV
 			var x = document.getElementById("snackbar")
 			// Add the "show" class to DIV
@@ -117,94 +138,7 @@ function addCat() {
 			breed.value = "";
 			age.value = "";
 			description.value = "";
-			catImage.files[0] = null;
+			catImage.files[0] = null; //This doesn't fucking work but what ever
 	  });
 	});
-}
-
-function createCatElement(catId, name, gender, age, photoUrl) {
-	var uid = firebase.auth().currentUser.uid;
-	var html =
-		'<div class="card">' +
-			'<img id="photo" src="">' +
-			'<h6 id="name"></h6>' +
-			'<p id="gender"></p>' +
-			'<p id="age"></p>' +
-		'</div>';
-
-	// Create DOM element from the HTML
-	var div = document.createElement('div');
-	div.innerHTML = html;
-	var catElement = div.firstChild;
-
-	catElement.getElementById('name')[0].innerText = name;
-	catElement.getElementById('gender')[0].innerText = gender;
-	catElement.getElementById('age')[0].innerText = age;
-	catElement.getElementById('photo')[0].style.backgroundImage = 'url("' +
-      (photoUrl || './silhouette.jpg') + '")';
-
-	return catElement;
-}
-
-function startDatabaseQueriesMales() {
-	var ref = firebase.firestore();
-
-	ref.collection("cats").where("gender", "==", "Male")
-		.get()
-		.then(function(querySnapshot) {
-			querySnapshot.forEach(function(doc) {
-				var containerElement = sectionElement.getElementsByClassName('card-container')[0];
-				containerElement.insertBefore(
-					createCatElement(doc.key, doc.val().name, doc.val().gender, data.val().age, data.val().photoUrl),
-					containerElement.firstChild);
-			});
-		})
-		.catch(function(error) {
-			console.log("Error getting some documents: ", error);
-		});
-}
-
-function startDatabaseQueriesFemales() {
-	var ref = firebase.firestore();
-
-	ref.collection("cats").where("gender", "==", "Female")
-		.get()
-		.then(function(doc) {
-			querySnapshot.forEach(function(doc) {
-				createCatElement(doc.key, doc.val().name, doc.val().gender, data.val().age, data.val().photoUrl);
-			})
-		})
-		.catch(function(error) {
-			console.log("Error getting some documents: ", error);
-		});
-}
-
-function startDatabaseQueriesAdults() {
-	var ref = firebase.firestore();
-
-	ref.collection("cats").where("age", ">=", 2)
-		.get()
-		.then(function(querySnapshot) {
-			querySnapshot.forEach(function(doc) {
-				createCatElement(doc.key, doc.val().name, doc.val().gender, data.val().age, data.val().photoUrl);
-			})
-		})
-		.catch(function(error) {
-			console.log("Error getting some documents: ", error);
-		});
-}
-
-function startDatabaseQueriesKittens() {
-	var ref = firebase.firestore();
-
-	ref.collection("cats").where("age", "<=", 1)
-		.get()
-		.then(function(querySnapshot) {
-			querySnapshot.forEach(function(doc) {
-				createCatElement(doc.key, doc.val().name, doc.val().gender, data.val().age, data.val().photoUrl);
-			})
-		})
-		.catch(function(error) {
-			console.log("Error getting some documents: ", error);
-		});
 }
